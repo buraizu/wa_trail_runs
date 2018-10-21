@@ -1,4 +1,6 @@
-
+require "nokogiri"
+require "open-uri"
+require "pry"
 
 require_relative "./wa_trail_runs/version"
 
