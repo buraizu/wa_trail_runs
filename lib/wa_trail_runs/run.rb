@@ -14,8 +14,18 @@ class WaTrailRuns::Run
   end
 
   def self.scrape_evergreen
-    doc = Nokogiri::HTML(open("http://www.evergreentrailruns.com/"))
+    race_hash = {}
+    evergreen_top = Nokogiri::HTML(open("http://www.evergreentrailruns.com/"))
+    evergreen_event = Nokogiri::HTML(open("http://www.evergreentrailruns.com/11-17-grand-ridge-trail-run"))
     doc2 = Nokogiri::HTML(open("http://nwtrailruns.com/events/"))
+    description = evergreen_top.css(".custom div")[1].text
+    title = evergreen_top.css(".custom div")[1].children[1].to_s.split(" - ")[0].delete!("/<h4>/")
+    date = evergreen_top.css(".custom div")[1].children[1].to_s.split(" - ")[1].delete!("/<h4>/")
+    info_link = evergreen_top.css(".custom div")[1].children[3].children[0].attribute("href").text.prepend("www.evergreentrailruns.com")
+    race_hash[:description] = description
+    race_hash[:title] = title
+    race_hash[:date] = date
+    race_hash[:info_link] = info_link
     binding.pry
   end
 end
