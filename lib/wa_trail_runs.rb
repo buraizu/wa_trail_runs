@@ -1,5 +1,5 @@
-require "wa_trail_runs/version"
+require_relative "./wa_trail_runs/version"
 
-module WaTrailRuns
-  # Your code goes here...
-end
+require_relative "./wa_trail_runs/cli"
+
+require_relative "./wa_trail_runs/run"

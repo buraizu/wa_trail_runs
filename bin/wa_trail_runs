@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/wa_trail_runs'
+
+WaTrailRuns::CLI.new.call
