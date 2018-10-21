@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Lists upcoming trail runs in Washington State"
   spec.description   = "Lists the date and url of upcoming trail runs in Washington State"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/buraizu/wa_trail_runs.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
