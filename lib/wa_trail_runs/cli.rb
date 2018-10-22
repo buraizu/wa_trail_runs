@@ -9,11 +9,11 @@ class WaTrailRuns::CLI
   end      # End call
 
   def list_runs
-    puts "Check out the upcoming runs"
-
+    puts "Check out the upcoming runs!"
     @runs = WaTrailRuns::Run.upcoming
     @runs.each.with_index(1) do |run, index|
       puts "#{index}. #{run.title} - #{run.date}"
+
     end
   end
 
@@ -22,12 +22,16 @@ class WaTrailRuns::CLI
     while input != "exit"
       puts "Enter the number of the run you would like to learn more about, 'list' to show the list of runs, or 'exit'."
       input = gets.strip.downcase
-      if input.to_i > 0
+      range = (1..@runs.length)
+      if input.to_i > 0 && range.include?(input.to_i)
         chosen_run = @runs[input.to_i - 1]
-        puts "#{chosen_run.title} - #{chosen_run.description} - #{chosen_run.info_url} - #{chosen_run.reg_url}"
+        puts "#{chosen_run.title}:
+        Description: #{chosen_run.description}
+        More Info: #{chosen_run.info_url}
+        Registration: #{chosen_run.reg_url}"
       elsif input == "list"
         list_runs
-      else
+      elsif input != 'list' && input != 'exit'
         puts "Invalid input.  Type 'list' to see the runs or 'exit' to quit."
       end
     end
