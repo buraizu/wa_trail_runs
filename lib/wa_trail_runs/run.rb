@@ -14,9 +14,9 @@ class WaTrailRuns::Run
   end
 
   def self.scrape_evergreen
-    run = self.new
     evergreen_top = Nokogiri::HTML(open("http://www.evergreentrailruns.com/"))
     evergreen_event = Nokogiri::HTML(open("http://www.evergreentrailruns.com/11-17-grand-ridge-trail-run"))
+    run = self.new
     run.title = evergreen_top.css(".custom div")[1].children[1].to_s.split(" - ")[0].delete!("/<h4>/")
     run.description = evergreen_event.css(".item_content p")[0].text
     run.date = evergreen_top.css(".custom div")[1].children[1].to_s.split(" - ")[1].delete!("/<h4>/")
