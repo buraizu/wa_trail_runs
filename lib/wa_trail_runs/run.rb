@@ -39,7 +39,13 @@ class WaTrailRuns::Run
     info_link = events.css(".the-title").first.css("a").attribute("href").text
     date = events.css(".the-date").first.text
     reg_link = events.css(".the-links").first.children[3].attribute("href").text
-    binding.pry
+    race_hash[:title] = title
+    race_hash[:description] = description
+    race_hash[:date] = date
+    race_hash[:info_link] = info_link
+    race_hash[:reg_link] = reg_link
+    race_hash
+    binding.pry 
   end
 end
 
