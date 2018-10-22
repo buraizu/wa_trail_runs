@@ -34,7 +34,11 @@ class WaTrailRuns::Run
     race_hash = {}
     northwest = Nokogiri::HTML(open("http://nwtrailruns.com/events/"))
     events = northwest.css(".event")
-    
+    title = events.css(".the-title").first.text.strip
+    description = events.css(".the-content").first.children
+    info_link = events.css(".the-title").first.css("a").attribute("href").text
+    date = events.css(".the-date").first.text
+    reg_link = events.css(".the-links").first.children[2].attribute("href").text
     binding.pry
   end
 end
