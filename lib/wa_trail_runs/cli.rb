@@ -28,9 +28,9 @@ class WaTrailRuns::CLI
       if input.to_i > 0 && range.include?(input.to_i)
         chosen_run = WaTrailRuns::Run.all[input.to_i - 1]
         puts "#{chosen_run.title}:
-        Description: #{chosen_run.description}
-        More Info: #{chosen_run.info_url}
-        Registration: #{chosen_run.reg_url}"
+        DESCRIPTION: #{chosen_run.description}
+        MORE INFO: #{chosen_run.info_url}
+        SIGN UP: #{chosen_run.reg_url}"
       elsif input == "list"
         list_runs
       elsif input != 'list' && input != 'exit'

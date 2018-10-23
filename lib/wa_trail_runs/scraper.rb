@@ -21,10 +21,17 @@ class WaTrailRuns::Scraper
     @northwest = Nokogiri::HTML(open("http://nwtrailruns.com/events/"))
     run_array = []
     events = @northwest.css(".event")
-    events.each do |event|
+
+    counter = 0
+      events.each do |event|
+
+        if counter < 4
+
+
       run = WaTrailRuns::Run.new
-      reg_link = event.search("a[target='_blank']")
-      if reg_link != nil
+      # reg_link = event.search("a[target='_blank']")
+      # if reg_link != nil
+
         run.title = event.css(".the-title").text.strip
         run.description = event.css(".the-content").children[1].text
         run.date = event.css(".the-date").text
@@ -35,8 +42,12 @@ class WaTrailRuns::Scraper
       # rescue NoMethodError
       #   binding.pry
       # end
-      end
+      # end
       run.save
+      counter = counter + 1
+
+    end
+
     end
 
 
@@ -44,9 +55,9 @@ class WaTrailRuns::Scraper
 
 
 
-  end
+  end       #End scrape_northwest
 
 
 
 
-end
+end     # End Scraper
