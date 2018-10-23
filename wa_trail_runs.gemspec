@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["'bryce.eadie@gmail.com'"]
 
   spec.summary       = "Lists upcoming trail runs in Washington State"
-  spec.description   = "Lists the date and url of upcoming trail runs in Washington State"
+  spec.description   = "Lists the date, description, info url, and registration url of upcoming trail runs in Washington State"
   spec.homepage      = "https://github.com/buraizu/wa_trail_runs.git"
   spec.license       = "MIT"
 
