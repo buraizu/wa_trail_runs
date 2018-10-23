@@ -8,16 +8,13 @@ class WaTrailRuns::Run
     @@all
   end
 
-  def self.upcoming
-    self.scrape_runs
-  end
-
   def save
     @@all << self
   end
 
   def runs
-    WaTrailRuns::Scraper.new.scrape_runs
+    WaTrailRuns::Scraper.new.scrape_evergreen
+    WaTrailRuns::Scraper.new.scrape_northwest
   end
 
   # def self.scrape_runs

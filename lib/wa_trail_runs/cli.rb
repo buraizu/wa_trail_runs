@@ -13,7 +13,7 @@ class WaTrailRuns::CLI
 
   def list_runs
     puts "Check out the upcoming runs!"
-    WaTrailRuns::Run.all.each_with_index do |run, index|
+    WaTrailRuns::Run.all.each.with_index(1) do |run, index|
       puts "#{index}. #{run.title} - #{run.date}"
     end
   end
@@ -25,7 +25,7 @@ class WaTrailRuns::CLI
       input = gets.strip.downcase
       range = (1..WaTrailRuns::Run.all.size)
       if input.to_i > 0 && range.include?(input.to_i)
-        chosen_run = @runs[input.to_i - 1]
+        chosen_run = WaTrailRuns::Run.all[input.to_i - 1]
         puts "#{chosen_run.title}:
         Description: #{chosen_run.description}
         More Info: #{chosen_run.info_url}
