@@ -1,7 +1,6 @@
 #CLI Controller
 class WaTrailRuns::CLI
 
-
   def call
     puts "Welcome to WaTrailRuns, your go-to source for upcoming trail races in Washington State!"
     sleep 0.5
@@ -10,7 +9,7 @@ class WaTrailRuns::CLI
     list_runs
     menu
     goodbye
-  end      # End call
+  end      
 
   def list_runs
     puts "Check out the upcoming runs!"
@@ -43,4 +42,4 @@ class WaTrailRuns::CLI
     puts "Happy trails!"
   end
 
-end     #End class
+end
