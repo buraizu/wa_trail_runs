@@ -19,6 +19,8 @@ Or install it yourself as:
 
     $ gem install wa_trail_runs
 
+Once the gem is installed, enter "WaTrailRuns::CLI.new.call" into your terminal.  See you on the trails!
+
 ## Usage
 
 Following installation, within your terminal enter './bin/wa_trail_runs'.  You will see a welcome message followed by a numbered list of the next five upcoming trail runs in Washington State.  Simply select the number of any run you would like to know more about, and you will receive a short description as well as links for further exploring and registration.  To return to the list view, enter 'list' to your terminal, and to exit, enter 'exit'.
