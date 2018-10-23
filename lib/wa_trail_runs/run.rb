@@ -12,10 +12,10 @@ class WaTrailRuns::Run
     @@all << self
   end
 
-  def runs
-    WaTrailRuns::Scraper.new.scrape_evergreen
-    WaTrailRuns::Scraper.new.scrape_northwest
-  end
+  # def runs
+  #   WaTrailRuns::Scraper.new.scrape_evergreen
+  #   WaTrailRuns::Scraper.new.scrape_northwest
+  # end
 
   # def self.scrape_runs
   #   runs = []

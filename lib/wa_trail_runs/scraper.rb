@@ -1,5 +1,9 @@
 class WaTrailRuns::Scraper
 
+
+
+
+
   def scrape_evergreen
     @evergreen_top = Nokogiri::HTML(open("http://www.evergreentrailruns.com/"))
     @evergreen_event = Nokogiri::HTML(open("http://www.evergreentrailruns.com/11-17-grand-ridge-trail-run"))
@@ -16,14 +20,30 @@ class WaTrailRuns::Scraper
   def scrape_northwest
     @northwest = Nokogiri::HTML(open("http://nwtrailruns.com/events/"))
     run_array = []
-    event = @northwest.css(".event").first
-    run = WaTrailRuns::Run.new
-    run.title = event.css(".the-title").text.strip
-    run.description = event.css(".the-content").children[1].text
-    run.date = event.css(".the-date").text
-    run.info_url = event.css(".the-title").css("a").attribute("href").text
-    run.reg_url = event.css(".the-links").children[3].attribute("href").text
-    run.save
+    events = @northwest.css(".event")
+    events.each do |event|
+      run = WaTrailRuns::Run.new
+      reg_link = event.search("a[target='_blank']")
+      if reg_link != nil
+        run.title = event.css(".the-title").text.strip
+        run.description = event.css(".the-content").children[1].text
+        run.date = event.css(".the-date").text
+        run.info_url = event.css(".the-title").css("a").attribute("href").text
+
+        # begin
+        run.reg_url = event.search("a[target='_blank']").attribute("href").text
+      # rescue NoMethodError
+      #   binding.pry
+      # end
+      end
+      run.save
+    end
+
+
+
+
+
+
   end
 
 
