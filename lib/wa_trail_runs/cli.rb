@@ -3,6 +3,9 @@ class WaTrailRuns::CLI
 
 
   def call
+    puts "Welcome to WaTrailRuns!"
+    WaTrailRuns::Scraper.new.scrape_evergreen
+    WaTrailRuns::Scraper.new.scrape_northwest
     list_runs
     menu
     goodbye
@@ -10,10 +13,8 @@ class WaTrailRuns::CLI
 
   def list_runs
     puts "Check out the upcoming runs!"
-    @runs = WaTrailRuns::Run.upcoming
-    @runs.each.with_index(1) do |run, index|
+    WaTrailRuns::Run.all.each_with_index do |run, index|
       puts "#{index}. #{run.title} - #{run.date}"
-
     end
   end
 
@@ -22,7 +23,7 @@ class WaTrailRuns::CLI
     while input != "exit"
       puts "Enter the number of the run you would like to learn more about, 'list' to show the list of runs, or 'exit'."
       input = gets.strip.downcase
-      range = (1..@runs.length)
+      range = (1..WaTrailRuns::Run.all.size)
       if input.to_i > 0 && range.include?(input.to_i)
         chosen_run = @runs[input.to_i - 1]
         puts "#{chosen_run.title}:
