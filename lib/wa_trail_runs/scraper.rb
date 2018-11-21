@@ -16,7 +16,6 @@ class WaTrailRuns::Scraper
 
   def scrape_northwest
     @northwest = Nokogiri::HTML(open("http://nwtrailruns.com/events/"))
-    run_array = []
     events = @northwest.css(".event")
     counter = 0
     events.each do |event|

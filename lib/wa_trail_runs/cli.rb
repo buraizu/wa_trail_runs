@@ -4,8 +4,8 @@ class WaTrailRuns::CLI
   def call
     puts "Welcome to WaTrailRuns, your go-to source for upcoming trail races in Washington State!"
     sleep 0.5
-    
-    WaTrailRuns::Scraper.new.scrape_northwest
+
+  WaTrailRuns::Scraper.new.scrape_northwest
     list_runs
     menu
     goodbye
