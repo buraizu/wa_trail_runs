@@ -23,8 +23,7 @@ class WaTrailRuns::CLI
     while input != "exit"
       puts "Enter the number of the run you would like to learn more about, 'list' to show the list of runs, or 'exit'."
       input = gets.strip.downcase
-      range = (1..WaTrailRuns::Run.all.size)
-      if input.to_i > 0 && range.include?(input.to_i)
+      if input.to_i > 0 && input.to_i <= WaTrailRuns::Run.all.size
         chosen_run = WaTrailRuns::Run.all[input.to_i - 1]
         puts "#{chosen_run.title}:
         DESCRIPTION: #{chosen_run.description}
