@@ -19,4 +19,5 @@ class WaTrailRuns::Scraper
     end
 
   end
+
 end
